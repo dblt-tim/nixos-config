@@ -6,12 +6,13 @@
     [
       ./users/tim.nix
 
-      ./boot.nix
-      ./console.nix
-      ./lang.nix
-      ./time.nix
-      ./keyboard.nix
-      ./sound.nix
+      ./core/boot.nix
+      ./core/console.nix
+      ./core/lang.nix
+      ./core/time.nix
+      ./core/keyboard.nix
+      ./core/sound.nix
+
       ./packages.nix
 
       ./serial.nix
