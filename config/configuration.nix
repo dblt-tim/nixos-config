@@ -12,10 +12,8 @@
       ./core/time.nix
       ./core/keyboard.nix
       ./core/sound.nix
-
+      ./core/network.nix
       ./packages.nix
-
-      ./serial.nix
     ];
 
   networking.hostName = "snowflake"; # Define your hostname.

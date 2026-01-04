@@ -18,7 +18,7 @@
 
       modules = [
         ./config/configuration.nix
-        ./hosts/vm.nix # should be changed later when switching to bare metal
+        ./hosts/laptop.nix 
         home-manager.nixosModules.home-manager {
           home-manager = {
             useGlobalPkgs = true;
