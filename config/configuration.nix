@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware/fw12.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -76,6 +76,9 @@
     kitty
     git
   ];
+
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
