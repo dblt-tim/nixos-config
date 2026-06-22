@@ -75,6 +75,7 @@
     wget
     kitty
     git
+    gh
   ];
 
 
