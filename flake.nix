@@ -6,24 +6,25 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs"; # share nixpkgs to avoid duplication
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.fw12 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; }; # pass inputs to modules
       modules = [
-        ./config/configuration.nix
+        ./hosts/fw12
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
+            useGlobalPkgs = true; # use system nixpkgs
+            useUserPackages = true; # install to /etc/profiles
 
-            users.tim = import ./config/users/tim.home.nix;
+            users.tim = import ./home/tim;
 
-            backupFileExtension = "backup";
+            extraSpecialArgs = { inherit inputs; };
           };
         }
       ];
