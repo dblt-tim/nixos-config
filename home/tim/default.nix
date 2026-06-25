@@ -26,6 +26,8 @@ in
     extraConfig = {
       pull.rebase = true;
       init.defaultBranch = "main";
+      credential."https://github.com".helper = 
+        "!/run/current-system/sw/bin/gh auth git-credential";
     };
     delta.enable = true;
   };
