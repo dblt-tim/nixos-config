@@ -14,6 +14,12 @@
     '';
   };
 
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+  programs.hyprland.enable = true;
+
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "fr_FR.UTF-8";
@@ -45,7 +51,13 @@
     git
     vim
     gh
+  ];
 
+  fonts.enableDefaultPackages = true;
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
   ];
 

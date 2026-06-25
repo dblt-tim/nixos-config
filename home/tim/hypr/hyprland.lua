@@ -1,5 +1,4 @@
 
-
 hl.monitor({
   output = "",
   mode = "preferred",
@@ -88,7 +87,7 @@ hl.config({
 
     sensitivity = 0,
 
-    touchpad = { natural_scroll = false },
+    touchpad = { natural_scroll = true },
   },
 })
 
@@ -101,3 +100,5 @@ hl.bind(mod .. " + Q", hl.dsp.exec_cmd(term))
 hl.bind(mod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown > /dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mod .. " + F", hl.dsp.exec_cmd("firefox"))
 hl.bind(mod .. " + X", hl.dsp.window.close())
+
+

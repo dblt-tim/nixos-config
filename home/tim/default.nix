@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 let
   nixosConfig = "/home/tim/.config/nixos";
@@ -12,7 +12,10 @@ in
     firefox
     eza
     kitty
-  ];
+    zed-editor
+  ] ++ (with inputs.astal.packages.${pkgs.system}; [
+    notifd
+  ]);
 
 
   programs.git = {
@@ -37,6 +40,21 @@ in
     interactiveShellInit = ''
       set -g fish_greeting ""
     '';
+  };
+  
+  programs.ags = {
+    enable = true;
+
+    configDir = null; # we manage it manually
+
+    extraPackages = with inputs.astal.packages.${pkgs.system}; [
+      battery
+      network
+      bluetooth
+      tray
+      mpris
+      notifd
+    ];
   };
 
   wayland.windowManager.hyprland = {
