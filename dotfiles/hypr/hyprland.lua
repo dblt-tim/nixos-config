@@ -28,3 +28,8 @@ hl.bind("SUPER + R", hl.dsp.focus({workspace = 4}))
 
 
 hl.bind("SUPER + SHIFT + A", hl.dsp.window.move({workspace = 1}))
+hl.bind("SUPER + SHIFT + Z", hl.dsp.window.move({workspace = 2}))
+hl.bind("SUPER + SHIFT + E", hl.dsp.window.move({workspace = 3}))
+hl.bind("SUPER + SHIFT + R", hl.dsp.window.move({workspace = 4}))
+
+hl.bind("SUPER + X", hl.dsp.window.close())

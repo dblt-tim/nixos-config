@@ -13,7 +13,7 @@
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
 
-      liberation-ttf
+      liberation_ttf
       carlito
       caladea
     ];
