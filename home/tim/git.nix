@@ -11,4 +11,9 @@
       pull.rebase = true;
     };
   };
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
+  };
 }
