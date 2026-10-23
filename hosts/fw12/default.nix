@@ -1,7 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ hostname, ... }:
 
 {
-  imports = [ ../shared.nix ./hardware.nix];
+  imports = [ ./hardware.nix ];
 
-  networking.hostName = "nixy";
+  networking.hostName = hostname;
 }

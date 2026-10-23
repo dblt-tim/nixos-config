@@ -1,74 +1,24 @@
-{ config, pkgs, lib, inputs, ... }:
 
-let
-  nixosConfig = "/home/tim/.config/nixos";
-in
 {
-  home.username = "tim";
-  home.homeDirectory = "/home/tim";
-  home.stateVersion = "26.05";
-
-  home.packages = with pkgs; [
-    firefox
-    eza
-    kitty
-    zed-editor
-  ] ++ (with inputs.astal.packages.${pkgs.system}; [
-    notifd
-  ]);
-
-
-  programs.git = {
-    enable = true;
-    userName = "dblt-tim";
-    userEmail = "timeodiebolt@gmail.com";
-
-    extraConfig = {
-      pull.rebase = true;
-      init.defaultBranch = "main";
-      credential."https://github.com".helper = 
-        "!/run/current-system/sw/bin/gh auth git-credential";
-    };
-    delta.enable = true;
-  };
-
-  programs.fish = {
-    enable = true;
-
-    shellAliases = {
-      ls = "eza -l --icons";
-    };
-
-    interactiveShellInit = ''
-      set -g fish_greeting ""
-    '';
-  };
+  imports = [
+    ./shell.nix
+    ./git.nix
+    ./editor.nix
+    
+    ../shared
+  ];
   
-  programs.ags = {
+  home = {
+    username = "tim";
+    homeDirectory = "/home/tim";
+    stateVersion = "26.05";
+  };
+
+  xdg = {
     enable = true;
-
-    configDir = null; # we manage it manually
-
-    extraPackages = with inputs.astal.packages.${pkgs.system}; [
-      battery
-      network
-      bluetooth
-      tray
-      mpris
-      notifd
-    ];
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
   };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = pkgs.hyprland;
-    settings = lib.mkForce {};
-    extraConfig = lib.mkForce "";
-  };
-  xdg.configFile."hypr/hyprland.lua" = lib.mkForce {
-    source = 
-      config.lib.file.mkOutOfStoreSymlink "${nixosConfig}/home/tim/hypr/hyprland.lua";
-  };
-
-  programs.home-manager.enable = true;
 }
