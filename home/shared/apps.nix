@@ -4,7 +4,7 @@
   imports = [ ];
 
   home.packages = with pkgs; [
-    libreoffice-fresh
+    libreoffice
     marker
     texworks
     texliveFull
