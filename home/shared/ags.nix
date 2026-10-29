@@ -1,17 +1,14 @@
 { config, inputs, pkgs, ... }:
-
 let
-  dots = "${config.home.homeDirectory}/.config/nixos/dotfiles";
   astal = inputs.astal.packages.${pkgs.stdenv.hostPlatform.system};
-
+  dots = "${config.home.homeDirectory}/.config/nixos/dotfiles";
 in
 {
   imports = [ inputs.ags.homeManagerModules.default ];
 
   programs.ags = {
     enable = true;
-
-    extraPackages = with astal; [
+    extraPackages = (with astal; [
       apps
       battery
       bluetooth
@@ -22,9 +19,8 @@ in
       powerprofiles
       tray
       wireplumber
-    ];
+    ]) ++ [ pkgs.libadwaita ];
 
-    systemd.enable = true;
   };
 
   xdg.configFile."ags".source = config.lib.file.mkOutOfStoreSymlink "${dots}/ags";

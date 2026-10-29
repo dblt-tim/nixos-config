@@ -24,5 +24,16 @@
       monospace = [ "JetBrainsMono Nerd Font" ];
       emoji = [ "Noto Color Emoji" ];
     };
+    fontconfig = {
+      antialias = true;
+      hinting = {
+        enable = true;
+        style = "slight"; # try "none" if glyphs look snapped or uneven at 1.25
+      };
+      subpixel = {
+        rgba = "none";    # grayscale; see below
+        lcdfilter = "default";
+      };
+    };
   };
 }

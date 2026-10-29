@@ -1,0 +1,20 @@
+window.launcher {
+  background: transparent;
+}
+
+window.launcher .panel {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 16px;
+  padding: 12px;
+  min-width: 420px;
+}
+
+window.launcher entry {
+  margin-bottom: 8px;
+}
+
+window.launcher button {
+  border-radius: 10px;
+  padding: 6px 10px;
+}
